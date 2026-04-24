@@ -64,6 +64,16 @@ python src/generate_data.py
 streamlit run src/app.py
 ```
 
+## Vercel Deployment Fix
+
+Vercel requires a Python ASGI/WSGI entrypoint (`app`) and cannot directly run Streamlit as the primary runtime.
+
+This repo now includes:
+- `api/index.py` (FastAPI app entrypoint for Vercel)
+- `vercel.json` (rewrites all routes to `/api/index`)
+
+So Vercel can deploy a web dashboard endpoint successfully.
+
 ## Recommended Analysis Story (for presentation)
 
 1. **UPI scaling:** show long-term transaction growth trend.
